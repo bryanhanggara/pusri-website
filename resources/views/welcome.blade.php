@@ -216,10 +216,10 @@
                         <div class="col-md-6 text-white bg-primary p-5">
                           <div class="d-flex align-items-center">
                             <i class="bi bi-megaphone-fill fs-1 me-3"></i>
-                            <h2>Pengumuman</h2>
+                            <h2 class="text-light">Pengumuman</h2>
                           </div>
                           <p>Pengumuman terbaru PT Pupuk Sriwidjaja</p>
-                          <a href="#" class="btn btn-light">Semua <i class="bi bi-arrow-right"></i></a>
+                          <a href="{{route('agenda.list')}}" class="btn btn-light">Semua <i class="bi bi-arrow-right"></i></a>
                         </div>
                   
                         <!-- Right Section -->
@@ -262,81 +262,51 @@
                     {{-- Agenda --}}
                     <section class="container my-5">
                       <!-- Title Section -->
-                      <h2 class="text-center mb-5" style="font-family: 'serif';">Agenda</h2>
+                      <h2 class="text-center mb-5">Agenda</h2>
                   
                       <!-- Event Cards -->
                       <div class="row">
-                          <div class="col-lg-4 col-md-6 mb-4 d-flex justify-content-center" data-aos="zoom-out">
+                          @forelse ($agendas as $item)
+                            <div class="col-lg-4 col-md-6 mb-4 d-flex justify-content-center" data-aos="zoom-out">
                               <div class="card">
-                                  <img src="{{ asset ('assets/images/Agenda Utama.jpg') }}" class="card-img-top" alt="Event 1">
+                                  <img src="{{ asset ('storage/'. $item->image) }}" class="card-img-top" alt="Event 1">
                                   <div class="card-body text-center">
-                                      <h5 class="card-title">Event 1</h5>
-                                      <p class="card-text">Event description here.</p>
+                                      <h5 class="card-title">{{ \Str::limit($item->title, 50, '...') }}</h5>
+                                      <p class="card-text">{{ \Str::limit($item->description, 80, '...') }}</p>
                                   </div>
                               </div>
                           </div>
-                  
-                          <div class="col-lg-4 col-md-6 mb-4 d-flex justify-content-center" data-aos="zoom-out">
-                              <div class="card">
-                                  <img src="{{ asset ('assets/images/Agenda Utama.jpg') }}" class="card-img-top" alt="Event 2">
-                                  <div class="card-body text-center">
-                                      <h5 class="card-title">Event 2</h5>
-                                      <p class="card-text">Event description here.</p>
-                                  </div>
-                              </div>
-                          </div>
-                  
-                          <div class="col-lg-4 col-md-6 mb-4 d-flex justify-content-center" data-aos="zoom-out">
-                              <div class="card">
-                                  <img src="{{ asset ('assets/images/Agenda Utama.jpg') }}" class="card-img-top" alt="Event 3">
-                                  <div class="card-body text-center">
-                                      <h5 class="card-title">Event 3</h5>
-                                      <p class="card-text">Event description here.</p>
-                                  </div>
-                              </div>
-                          </div>
+                          @empty
+                              <p class="text-center">
+                                Belom ada agenda
+                              </p>
+                          @endforelse
                       </div>
                   
                       <!-- News Section -->
                       <div class="d-flex justify-content-between align-items-center my-4">
                           <h3>Berita</h3>
-                          <a href="#" class="btn btn-primary">Semua →</a>
+                          <a href="{{route('news.list')}}" class="btn btn-primary">Semua →</a>
                       </div>
                   
                       <!-- News Cards -->
                       <div class="row">
+                          @forelse ($news as $item)
                           <div class="col-lg-4 col-md-6 mb-4 d-flex justify-content-center" data-aos="zoom-in">
-                              <div class="card">
-                                  <img src="{{ asset ('assets/images/Agenda 1.jpg') }}" class="card-img-top" alt="News 1">
-                                  <div class="card-body">
-                                      <h5 class="card-title">01 Juli 2024</h5>
-                                      <p class="card-text">PT Pupuk Indonesia menggelar pust retail academy.</p>
-                                      <a href="#" class="btn btn-primary">Selengkapnya →</a>
-                                  </div>
-                              </div>
-                          </div>
-                  
-                          <div class="col-lg-4 col-md-6 mb-4 d-flex justify-content-center" data-aos="zoom-in">
-                              <div class="card">
-                                  <img src="{{ asset ('assets/images/Agenda 2.jpg') }}" class="card-img-top" alt="News 2">
-                                  <div class="card-body">
-                                      <h5 class="card-title">05 Juli 2024</h5>
-                                      <p class="card-text">Tutup produksi 2023, Pusri gelar acara penghargaan.</p>
-                                      <a href="#" class="btn btn-primary">Selengkapnya →</a>
-                                  </div>
-                              </div>
-                          </div>
-                  
-                          <div class="col-lg-4 col-md-6 mb-4 d-flex justify-content-center" data-aos="zoom-in">
-                              <div class="card">
-                                  <img src="{{ asset ('assets/images/Agenda 3.jpg') }}" class="card-img-top" alt="News 3">
-                                  <div class="card-body">
-                                      <h5 class="card-title">05 Juli 2024</h5>
-                                      <p class="card-text">Pusri Siapkan 72 Gudang, Pastikan Kelancaran Penyaluran Pupuk.</p>
-                                      <a href="#" class="btn btn-primary">Selengkapnya →</a>
-                                  </div>
-                              </div>
-                          </div>
+                            <div class="card">
+                                <img src="{{ asset('storage/' . $item->image) }}" class="card-img-top" alt="News 1" >
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ $item->created_at->format('d F Y') }}</h5>
+                                    <p class="card-text">{{ \Str::limit($item->title, 50, '...') }}</p>
+                                    <a href="{{ route('news.detail', $item->slug) }}" class="btn btn-primary">Selengkapnya →</a>
+                                </div>
+                            </div>
+                        </div>
+                          @empty
+                              <p class="text-center">
+                                Belum ada berita
+                              </p>
+                          @endforelse
                       </div>
                   </section>
                     {{-- Agenda --}}

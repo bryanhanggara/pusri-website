@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Agenda;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -38,6 +39,7 @@ class AgendaController extends Controller
 
         $agenda = new Agenda();
         $agenda->title = $request->title;
+        $agenda->slug = Str::slug($request->title);
         $agenda['image'] = $request->file('image')->store('agenda_image','public');
         $agenda->description = $request->description;
         $agenda->agenda_date = $request->agenda_date;
@@ -80,6 +82,7 @@ class AgendaController extends Controller
 
         $agenda = Agenda::findorFail($id);
         $agenda->title = $request->title;
+        $agenda->slug = Str::slug($request->title);
         $agenda->description = $request->description;
         $agenda->agenda_date = $request->agenda_date;
 

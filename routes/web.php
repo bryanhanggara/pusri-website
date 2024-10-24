@@ -1,13 +1,17 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\AgendaController;
 use App\Http\Controllers\ProfileController;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [HomeController::class,'index'])->name('home');
+Route::get('/agenda-list', [HomeController::class,'listAgenda'])->name('agenda.list');
+Route::get('/news-list', [HomeController::class,'listNews'])->name('new.list');
+Route::get('/agenda-detail/{slug}', [HomeController::class, 'agendaDetail'])->name('agenda.detail');
+Route::get('/berita/{slug}', [HomeController::class, 'newsDetail'])->name('news.detail');
+
 
 Route::get('/dashboard', function () {
     return view('admin.dashboard');

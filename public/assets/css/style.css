@@ -248,6 +248,8 @@ body{
 .card-img-top {
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
+  height: 200px; 
+  object-fit: cover;
 }
 
 .card-body {
@@ -291,3 +293,30 @@ footer .row p {
 .hero-title{
     padding-top: 400px;
 }
+
+.hero-search{
+  background-color: #0056b3;
+}
+
+.image-container {
+  max-height: 500px;
+  overflow: hidden;
+  position: relative;
+  border-radius: 10px;
+}
+
+.image-container img {
+  width: 100;
+  height: auto;
+  object-fit: cover;
+}
+
+.content span{
+  font-size: 50px;
+  color: #0056b3;
+}
+
+.content{
+  font-size: 20px;
+}
+

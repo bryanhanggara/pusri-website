@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\News;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -37,6 +38,7 @@ class NewsController extends Controller
 
         $news = new News();
         $news->title = $request->title;
+        $news->slug = Str::slug($request->title);
         $news['image'] = $request->file('image')->store('news_image','public');
         $news->description = $request->description;
 
@@ -77,6 +79,7 @@ class NewsController extends Controller
 
         $news = News::findorFail($id);
         $news->title = $request->title;
+        $news->slug = Str::slug($request->title);
         $news->description = $request->description;
 
         if ($request->hasFile('image')) {
