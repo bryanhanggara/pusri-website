@@ -13,8 +13,7 @@ class AgendaController extends Controller
      */
     public function index()
     {
-        $agendas = Agenda::paginate(5);
-        return view('admin.pages.agenda.index', compact('agendas'));
+        return view('admin.pages.agenda.index');
     }
 
     /**

@@ -18,7 +18,7 @@
                     </li>
                     <li class="{{ Request::is('dashboard-ecommerce-dashboard') ? 'active' : '' }}">
                         <a class="nav-link"
-                            href="{{ url('dashboard-ecommerce-dashboard') }}">Ecommerce Dashboard</a>
+                            href="{{ route('news.index') }}">Berita</a>
                     </li>
                 </ul>
             </li>

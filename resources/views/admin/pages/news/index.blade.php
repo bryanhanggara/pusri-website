@@ -21,17 +21,17 @@
 <div class="main-content">
     <section class="section">
         <div class="section-header">
-            <h1>Agenda</h1>
+            <h1>Berita</h1>
             <div class="section-header-breadcrumb">
                 <div class="breadcrumb-item active"><a href="#">Dashboard</a></div>
-                <div class="breadcrumb-item">Agenda
+                <div class="breadcrumb-item">Berita
 
                 </div>
             </div>
         </div>
 
         <div class="section-body">
-           @livewire('agenda-table')
+           @livewire('news-table')
         </div>
     </section>
 </div>

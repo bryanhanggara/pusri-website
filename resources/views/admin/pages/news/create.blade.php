@@ -18,18 +18,17 @@
             <h1>Form</h1>
             <div class="section-header-breadcrumb">
                 <div class="breadcrumb-item active"><a href="#">Dashboard</a></div>
-                <div class="breadcrumb-item"><a href="#">Agenda</a></div>
-                <div class="breadcrumb-item">Edit Agenda</div>
+                <div class="breadcrumb-item"><a href="#">Berita</a></div>
+                <div class="breadcrumb-item">Add Berita</div>
             </div>
         </div>
 
         <div class="section-body">
-            <h2 class="section-title">Edit Agenda</h2>
+            <h2 class="section-title">Add Berita</h2>
 
             <div class="card">
-                <form action="{{route('agenda.update', $agenda->id)}}" method="POST" enctype="multipart/form-data">
+                <form action="{{route('news.store')}}" method="POST" enctype="multipart/form-data">
                     @csrf
-                    @method('put')
                     <div class="card-body">
                         <div class="row">
                             <div class="form-group col-6">
@@ -38,7 +37,7 @@
                                     class="form-control @error('title')
                                 is-invalid
                             @enderror"
-                                    name="title" value="{{$agenda->title}}">
+                                    name="title">
                                 @error('title')
                                     <div class="invalid-feedback">
                                         {{ $message }}
@@ -46,7 +45,7 @@
                                 @enderror
                             </div>
                             <div class="form-group col-6">
-                                <label>Gambar</label>
+                                <label>Cover</label>
                                 <input type="file"
                                     class="form-control @error('image')
                                 is-invalid
@@ -61,22 +60,7 @@
                         </div>
                         <div class="form-group">
                             <label>Description</label>
-                            <textarea name="description" class="form-control"  cols="30" rows="10">
-                                {{ old('description', $agenda->description) }}
-                            </textarea>
-                        </div>
-                        <div class="form-group">
-                            <label>Tanggal Agenda</label>
-                            <input type="date"
-                                class="form-control @error('agenda_date')
-                            is-invalid
-                        @enderror"
-                                name="agenda_date" value="{{$agenda->agenda_date}}">
-                            @error('agenda_date')
-                                <div class="invalid-feedback">
-                                    {{ $message }}
-                                </div>
-                            @enderror
+                            <textarea name="description" class="form-control"  cols="30" rows="10"></textarea>
                         </div>
                        
                     </div>
