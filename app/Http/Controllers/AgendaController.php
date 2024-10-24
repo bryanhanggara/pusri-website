@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Agenda;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class AgendaController extends Controller
 {
@@ -12,8 +13,8 @@ class AgendaController extends Controller
      */
     public function index()
     {
-        $agendas = Agenda::all();
-        return view('admin.pages.news.index', compact('agendas'));
+        $agendas = Agenda::paginate(5);
+        return view('admin.pages.agenda.index', compact('agendas'));
     }
 
     /**
@@ -21,7 +22,7 @@ class AgendaController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.pages.agenda.create');
     }
 
     /**
@@ -29,7 +30,24 @@ class AgendaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'title' => 'required',
+            'image' => 'required|mimes:jpg,jpeg,png|max:4000',
+            'description' => 'required',
+            'agenda_date' => 'required',
+        ]);
+
+        $agenda = new Agenda();
+        $agenda->title = $request->title;
+        $agenda['image'] = $request->file('image')->store('agenda_image','public');
+        $agenda->description = $request->description;
+        $agenda->agenda_date = $request->agenda_date;
+
+        $agenda->save();
+
+        Alert::success('Sukses','Agenda Berhasil dibuat');
+        return redirect()->route('agenda.index');
+
     }
 
     /**
@@ -45,7 +63,8 @@ class AgendaController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $agenda = Agenda::findorfail($id);
+        return view('admin.pages.agenda.edit', compact('agenda'));
     }
 
     /**
@@ -53,7 +72,27 @@ class AgendaController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'title' => 'required',
+            'image' => 'mimes:jpg,jpeg,png|max:4000',
+            'description' => 'required',
+            'agenda_date' => 'required',
+        ]);
+
+        $agenda = Agenda::findorFail($id);
+        $agenda->title = $request->title;
+        $agenda->description = $request->description;
+        $agenda->agenda_date = $request->agenda_date;
+
+        if ($request->hasFile('image')) {
+            // Jika ada, simpan gambar baru
+            $data['image'] = $request->file('image')->store('agenda_image', 'public');
+        }
+
+        $agenda->save();
+
+        Alert::success('Sukses', 'Agenda Berhasil diubah');
+        return redirect()->route('agenda.index');
     }
 
     /**
@@ -61,6 +100,10 @@ class AgendaController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $agenda = Agenda::findorfail($id);
+        $agenda->delete();
+        
+        Alert::success('Sukses', 'Agenda Berhasil dihapus');
+        return redirect()->route('agenda.index');
     }
 }

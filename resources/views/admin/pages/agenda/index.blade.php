@@ -10,6 +10,14 @@
 @endpush
 
 @section('main')
+@if(session('success'))
+<script>
+    Swal.fire({
+        icon: 'success',
+        text: '{{ session('success') }}'
+    });
+</script>
+@endif
 <div class="main-content">
     <section class="section">
         <div class="section-header">
@@ -28,7 +36,7 @@
                     <div class="card">
                         
                         <div class="card-header">
-                            <a href="" class="btn btn-primary">
+                            <a href="{{route('agenda.create')}}" class="btn btn-primary">
                                 Add Agenda
                             </a>
                         </div>
@@ -67,19 +75,20 @@
                                              
                                              <td>{{$item->description}}</td>
                                              <td>
-                                                <img src="{{ asset('storage/' . $item->image) }}" width="100%" height="200"></img>
-                                                <a href="{{ asset('storage/' . $item->image) }}">Open PDF</a>
+                                                <a href="{{ asset('storage/' . $item->image) }}">
+                                                    <img src="{{ asset('storage/' . $item->image) }}" width="100%" height="200" class="p-3"></img>
+                                                </a>
                                              </td>
                                             
                                              <td>
-                                                {{-- <a href="{{route('books.show', $item->id)}}" class="btn btn-success"><i class="fa fa-eye"></i></a>
-                                                <a href="{{route('books.edit', $item->id)}}" class="btn btn-warning"><i class="fa fa-pen"></i></a>
+                                                {{-- <a href="{{route('agenda.show', $item->id)}}" class="btn btn-success"><i class="fa fa-eye"></i></a> --}}
+                                                <a href="{{route('agenda.edit', $item->id)}}" class="btn btn-warning"><i class="fa fa-pen"></i></a>
                                                 <a href="#" class="btn btn-danger" onclick="event.preventDefault(); document.getElementById('destroyForm').submit();"><i class="fa fa-trash"></i></a>
-                                                <form id="destroyForm" action="{{ route('books.destroy', $item->id) }}" method="post" style="display: none;">
+                                                <form id="destroyForm" action="{{ route('agenda.destroy', $item->id) }}" method="post" style="display: none;">
                                                     @csrf
                                                     @method('delete')
                                                     <button type="submit"></button>
-                                                </form> --}}
+                                                </form>
                                              </td>
                                         </tr>
                                         @empty
@@ -89,6 +98,7 @@
                                         @endforelse
                                     </tbody>
                                 </table>
+                                {{ $agendas->links() }}
                             </div>
                             <div class="float-right">
                             
