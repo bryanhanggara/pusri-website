@@ -1,0 +1,293 @@
+@import url('https://fonts.googleapis.com/css2?family=Maven+Pro:wght@400..900&display=swap');
+
+body{
+    font-family: "Maven Pro", sans-serif;
+}
+
+.btn{
+    background-color: white;
+    border-radius: 10px;
+    border-color: #005ca3;
+    padding: 10px 45px;
+    color: #090909;
+}
+
+.btn-outline{
+    background-color: #005ca3;
+    border-radius: 10px;
+    border-color: #f5f6f6;
+    padding: 10px 45px;
+    color: white;
+}
+
+/* Custom styling for the navbar */
+.custom-navbar {
+    background-color: white; /* Latar belakang putih */
+    padding: 15px 0; /* Padding atas dan bawah */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Bayangan untuk estetika */
+  }
+  
+  .custom-navbar .navbar-brand {
+    display: flex;
+    align-items: center;
+  }
+  
+  .custom-navbar .navbar-brand img {
+    margin-right: 10px; /* Spasi antara logo dan teks */
+  }
+  
+  .custom-navbar .navbar-title {
+    font-weight: bold;
+    font-size: 18px; /* Ukuran font judul */
+    color: #000; /* Warna teks hitam */
+  }
+  
+  .custom-navbar .navbar-nav .nav-link {
+    font-size: 16px; /* Ukuran font navigasi */
+    margin-left: 20px; /* Jarak antar item navbar */
+    color: #000; /* Warna link */
+  }
+  
+  .custom-navbar .navbar-nav .nav-link.active {
+    font-weight: bold;
+    border-bottom: 2px solid #007bff; /* Garis bawah untuk item aktif */
+  }
+
+  .about-section {
+    padding: 50px 0;
+    background-color: #f9f9f9;
+  }
+  
+  .image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .about-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+  }
+  
+  .text-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  .section-title {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  .section-subtitle {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 15px;
+  }
+  
+  .section-description {
+    font-size: 16px;
+    margin-bottom: 25px;
+  }
+  
+  .btn-primary {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 45px;
+    border: none;
+    border-radius: 10px;
+    text-decoration: none;
+  }
+  
+  .btn-primary:hover {
+    background-color: #0056b3;
+  }
+  
+  
+.nav-item .nav-link{
+    font-size: 18px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.scroll-nav-active{
+    background-color: #005ca3;
+    border-bottom: 1px solid #005ca3;
+}
+
+.text-nav-active{
+    color: black;
+}
+
+/* Direksi PT PUSRI */
+
+.d-flex {
+  text-align: center;
+}
+
+.card {
+  border: none;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.card-body {
+  padding: 20px;
+}
+
+.card-title {
+  color: #333;
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.card-text {
+  color: #666;
+  margin-bottom: 1.25rem;
+}
+
+.rounded-circle {
+  border: 2px solid #0056b3;
+}
+
+.btn-primary {
+  background-color: #0056b3;
+  border: none;
+  padding: 10px 20px;
+  transition: background-color 0.2s;
+}
+
+.btn-primary:hover {
+  background-color: #003f7f;
+}
+
+@media (min-width: 992px) {
+  .card {
+    width: 18rem;
+  }
+}
+
+.bg-primary {
+  background-color: #005ca3 !important;
+}
+
+.text-warning {
+  color: #FFC107 !important;
+}
+
+.icon i {
+  color: #FFC107;
+}
+
+.fw-bold {
+  font-weight: bold;
+}
+
+/* Style for Timeline */
+.timeline {
+  list-style: none;
+  padding: 0;
+  position: relative;
+}
+
+.timeline li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.timeline .number {
+  font-size: 1.5rem;
+  background-color: #005ca3;
+  color: white;
+  border-radius: 30%;
+  padding: 10px 15px;
+  font-weight: bold;
+  margin-right: 20px;
+}
+
+.timeline .details h6 {
+  margin: 0;
+  font-weight: bold;
+}
+
+.timeline .details p {
+  margin: 0;
+  color: gray;
+}
+
+/* Left Section */
+.bg-primary {
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+}
+
+.icon {
+  font-size: 2rem;
+}
+
+.btn-light {
+  margin-top: 20px;
+}
+
+/* Custom styles for the event and news section */
+.card {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border: none;
+  border-radius: 10px;
+}
+
+.card-img-top {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.card-body {
+  padding: 1.25rem;
+}
+
+h2, h3 {
+  color: #003366; /* Dark blue theme */
+}
+
+a.btn-primary {
+  background-color: #007bff;
+  border-color: #007bff;
+  border-radius: 50px;
+  padding: 0.5rem 1rem;
+}
+
+footer {
+  background-color: #005ca3;
+  color: #005ca3;
+}
+
+footer p {
+  margin-bottom: 0;
+  font-size: 14px;
+}
+
+footer .row p {
+  font-weight: bold;
+}
+
+
+#hero{
+    background-image: url('../../assets/images/bg-web-pabrik.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 800px;
+}
+
+.hero-title{
+    padding-top: 400px;
+}
